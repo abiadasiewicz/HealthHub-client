@@ -109,14 +109,14 @@ export class PatientEditFormComponent implements OnInit, OnDestroy {
         .addPatient(collectedData)
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => {
-          this.patientsService.navigateToSelectedPatient(collectedData.patientData.personalData.pesel);
+          this.patientsService.navigateToSelectedPatient(collectedData.id);
         });
     } else if (this.personalDetails?.id) {
       this.patientsApiService
         .updatePatient(this.personalDetails.id, collectedData)
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => {
-          this.patientsService.navigateToSelectedPatient(collectedData.patientData.personalData.pesel);
+          this.patientsService.navigateToSelectedPatient(collectedData.id);
         });
     }
     this.patientForm.disable();

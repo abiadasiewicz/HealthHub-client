@@ -13,7 +13,7 @@ import { getErrorMsg } from '../../../utils/validator-util';
 export class FilterComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<void>();
 
-  filterOptions: DataKeys[] = ['Nazwisko', 'Data urodzenia', 'PESEL', 'Nr telefonu'];
+  filterOptions: DataKeys[] = ['Nazwisko', 'Data urodzenia', 'PESEL'];
 
   lastName = '';
 

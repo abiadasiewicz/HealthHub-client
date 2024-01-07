@@ -46,8 +46,8 @@ export class PatientsPageComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  navigateToSelectedPatient(pesel: string) {
-    this.patientsSerivce.navigateToSelectedPatient(pesel);
+  navigateToSelectedPatient(id: number) {
+    this.patientsSerivce.navigateToSelectedPatient(id);
   }
 
   private getCardsConfig() {

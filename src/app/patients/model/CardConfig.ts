@@ -1,4 +1,5 @@
 export interface CardConfig {
+  id: number;
   fotoUrl?: string;
   firstName: string;
   lastName: string;

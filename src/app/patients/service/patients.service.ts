@@ -16,7 +16,7 @@ export class PatientsService {
     let sortField = params.sortAsc ?? params.sortDesc;
     let asc: boolean;
     if (!sortField) {
-      sortField = 'pesel';
+      sortField = 'lastName';
       asc = true;
     } else {
       asc = !!params?.sortAsc;
@@ -26,6 +26,7 @@ export class PatientsService {
 
   getMappedCardConfig(personalDetails: PersonalDetails[]): CardConfig[] {
     return personalDetails.map((card) => ({
+      id: card.id,
       fotoUrl: card.patientData?.fotoUrl,
       firstName: card.patientData.personalData.firstName,
       lastName: card.patientData.personalData.lastName,
@@ -55,8 +56,8 @@ export class PatientsService {
     return this.cardConfig;
   }
 
-  navigateToSelectedPatient(pesel: string): void {
-    void this.router.navigate([`patients/details/${pesel}`]);
+  navigateToSelectedPatient(id: number): void {
+    void this.router.navigate([`patients/details/${id}`]);
   }
 
   private filterCardConfigBy(filterFn: (value: CardConfig) => boolean): void {

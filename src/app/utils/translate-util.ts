@@ -6,9 +6,6 @@ export const translateKeysToEng = (value: DataKeys): string => {
     case 'Nazwisko': {
       return 'lastName';
     }
-    case 'Nr telefonu': {
-      return 'phone';
-    }
     case 'PESEL': {
       return 'pesel';
     }
@@ -21,4 +18,4 @@ export const translateKeysToEng = (value: DataKeys): string => {
   }
 };
 
-export type DataKeys = 'Imię' | 'Nazwisko' | 'Nr telefonu' | 'PESEL' | 'Data urodzenia';
+export type DataKeys = 'Imię' | 'Nazwisko' | 'PESEL' | 'Data urodzenia';

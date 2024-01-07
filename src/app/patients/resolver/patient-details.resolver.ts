@@ -5,12 +5,12 @@ import { ActivatedRouteSnapshot } from '@angular/router';
 import { PersonalDetails } from '../model/PersonalDetails';
 
 export const patientDetailsResolver: (route: ActivatedRouteSnapshot) => Observable<null | PersonalDetails> = (route) => {
-  const pesel = <string>route.paramMap.get('pesel');
+  const id = Number(route.paramMap.get('id'));
 
   const apiService = inject(PatientsApiService);
   return apiService.getAllPatients().pipe(
     switchMap((details) => {
-      const patient = details.find((patient) => patient.patientData.personalData.pesel === pesel);
+      const patient = details.find((patient) => patient.id === id);
       return of(patient ?? null);
     }),
     catchError((error) => {

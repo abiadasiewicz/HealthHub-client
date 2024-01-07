@@ -7,6 +7,7 @@ import { NewPatientPageComponent } from './patients/component/new-patient-page/n
 import { patientsPageResolver } from './patients/resolver/patients-page.resolver';
 import { PageNotFoundComponent } from './shared/component/page-not-found/page-not-found.component';
 import { unsavedChangesGuard } from './patients/guard/unsaved-changes.guard';
+import { CalendarComponent } from './calendar-view/calendar/calendar.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
     },
   },
   {
-    path: 'patients/details/:pesel',
+    path: 'patients/details/:id',
     component: PatientDetailsPageComponent,
     canDeactivate: [unsavedChangesGuard],
     resolve: {
@@ -33,6 +34,10 @@ const routes: Routes = [
     path: 'patients/new',
     component: NewPatientPageComponent,
     canDeactivate: [unsavedChangesGuard],
+  },
+  {
+    path: 'calendar',
+    component: CalendarComponent,
   },
   {
     path: '**',

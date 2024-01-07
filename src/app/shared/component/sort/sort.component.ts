@@ -7,7 +7,7 @@ import { SortButtonComponent } from '../sort-button/sort-button.component';
   styleUrls: ['./sort.component.scss'],
 })
 export class SortComponent {
-  sortedValues: SortConfig[] = ['Imię', 'Nazwisko', 'PESEL', 'Telefon'];
+  sortedValues: SortConfig[] = ['Imię', 'Nazwisko', 'PESEL'];
 
   @ViewChildren(SortButtonComponent) sortButtons: QueryList<SortButtonComponent> | undefined;
 
@@ -25,4 +25,4 @@ export class SortComponent {
   }
 }
 
-type SortConfig = 'Imię' | 'Nazwisko' | 'PESEL' | 'Telefon';
+type SortConfig = 'Imię' | 'Nazwisko' | 'PESEL';
