@@ -1,0 +1,10 @@
+{
+    "search.exclude": {
+        "**/dist": true
+    },
+    "git.enabled": false,
+    "terminal.integrated.scrollback": 100000,
+    "workbench.commandPalette.history": 15,
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.settings.enableNaturalLanguageSearch": false
+}

@@ -1,0 +1,25 @@
+:host {
+  background-color: aliceblue;
+
+  .container {
+    .title-container {
+      .addPatient {
+        i {
+          margin-right: 8px;
+          vertical-align: middle;
+          text-align: center;
+        }
+      }
+    }
+
+    .divider {
+      max-width: 120px;
+    }
+
+    as-patient-card {
+      margin: 6px;
+      display: block;
+      max-width: fit-content;
+    }
+  }
+}

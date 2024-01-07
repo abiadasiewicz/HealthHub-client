@@ -1,0 +1,20 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid d-flex">
+    <div class="d-flex align-items-center">
+      <i class="bi bi-journal-medical text-primary"></i>
+      <hr class="vertical-line cherry" />
+      <a class="navbar-brand fw-bolder darkblue" href="#">HealthHub</a>
+      <a class="nav-link" aria-current="page" [routerLink]="'/patients'" routerLinkActive="active">Pacjenci</a>
+      <a class="nav-link" [routerLink]="'/calendar'" routerLinkActive="active">Kalendarz</a>
+      <a class="nav-link" [routerLink]="'/contact'" routerLinkActive="active">Kontakt</a>
+    </div>
+    <div class="buttons-container">
+      <button class="btn btn-outline-dark signin">
+        <i class="bi bi-box-arrow-in-right arrow-in"></i><i class="bi bi-arrow-right-square arrow-square"></i>Logowanie
+      </button>
+      <button class="btn btn-outline-light signup">
+        <i class="bi bi-door-closed closed"></i><i class="bi bi-door-open opened"></i>Rejestracja
+      </button>
+    </div>
+  </div>
+</nav>

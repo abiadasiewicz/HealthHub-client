@@ -1,0 +1,24 @@
+:host {
+  .filter-element-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    flex-wrap: wrap;
+
+    //brzydko :( mam nadzieję,że starczy czasu to poprawić
+    ::ng-deep as-input {
+      padding-top: 16px;
+      max-width: 156px;
+
+      h5 {
+        font-size: 14px;
+        font-style: italic;
+        font-weight: normal;
+      }
+    }
+  }
+
+  as-filter-element {
+    margin: 0 16px;
+  }
+}

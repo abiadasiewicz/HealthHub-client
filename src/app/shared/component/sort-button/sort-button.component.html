@@ -1,0 +1,3 @@
+<button class="btn-transparent" (click)="toggleButton()" [ngClass]="{ desc: !sortAsc }" [class.inactive]="!clicked">
+  {{ value }} <i class="bi bi-sort-alpha-down down"></i><i class="bi bi-sort-alpha-up up"></i>
+</button>

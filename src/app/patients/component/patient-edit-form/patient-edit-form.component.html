@@ -1,0 +1,145 @@
+<form [formGroup]="patientForm">
+  <as-bordered-field>
+    <div class="patientData">
+      <img *ngIf="!editMode" src="{{ personalDetails?.patientData?.fotoUrl }}" class="card-img-top" alt="Zdjęcie pacjenta" />
+      <div class="input-container">
+        <as-input
+          *ngIf="editMode"
+          [label]="'Url zdjęcia'"
+          [controlName]="'fotoUrl'"
+          [group]="patientForm"
+          [errorMsg]="getErrorMsg('fotoUrl', patientForm)"
+          [isRequired]="true"
+          class="fotoInput"
+        />
+      </div>
+      <div class="personalData">
+        <h3>
+          Dane osobowe
+          <hr class="cherry" />
+        </h3>
+        <div class="singleData-container">
+          <as-input
+            [label]="'Imię'"
+            [controlName]="'firstName'"
+            [group]="patientForm"
+            [errorMsg]="getErrorMsg('firstName', patientForm)"
+            [isRequired]="editMode"
+            inputType="text"
+          />
+          <as-input
+            [label]="'Nazwisko'"
+            [controlName]="'lastName'"
+            [group]="patientForm"
+            [errorMsg]="getErrorMsg('lastName', patientForm)"
+            [isRequired]="editMode"
+            inputType="text"
+          />
+          <as-input
+            [label]="'Data urodzenia'"
+            [controlName]="'birthDate'"
+            [errorMsg]="getErrorMsg('birthDate', patientForm)"
+            [group]="patientForm"
+            [isRequired]="editMode"
+            inputType="text"
+          />
+          <as-input
+            [label]="'Pesel'"
+            [controlName]="'pesel'"
+            [errorMsg]="getErrorMsg('pesel', patientForm)"
+            [group]="patientForm"
+            [isRequired]="true"
+            inputType="text"
+          />
+        </div>
+        <hr class="azure" />
+      </div>
+    </div>
+    <div class="adressData mx-3">
+      <h3>
+        Adres
+        <hr class="cherry" />
+      </h3>
+      <div class="singleData-container">
+        <as-input
+          [label]="'Ulica'"
+          [controlName]="'street'"
+          [group]="patientForm"
+          [errorMsg]="getErrorMsg('street', patientForm)"
+          [isRequired]="editMode"
+          inputType="text"
+        />
+        <as-input
+          [label]="'Miasto'"
+          [controlName]="'city'"
+          [group]="patientForm"
+          [errorMsg]="getErrorMsg('city', patientForm)"
+          [isRequired]="editMode"
+          inputType="text"
+        />
+        <as-input
+          [label]="'Kod pocztowy'"
+          [controlName]="'postcode'"
+          [group]="patientForm"
+          [errorMsg]="getErrorMsg('postcode', patientForm)"
+          [isRequired]="editMode"
+          inputType="text"
+        />
+        <as-input
+          [label]="'Kraj'"
+          [controlName]="'country'"
+          [group]="patientForm"
+          [errorMsg]="getErrorMsg('country', patientForm)"
+          [isRequired]="editMode"
+          inputType="text"
+        />
+        <as-input
+          [label]="'Województwo'"
+          [controlName]="'province'"
+          [group]="patientForm"
+          [errorMsg]="getErrorMsg('province', patientForm)"
+          [isRequired]="editMode"
+          inputType="text"
+        />
+      </div>
+      <hr class="azure" />
+    </div>
+    <div class="contactData mx-3">
+      <h3>
+        Kontakt
+        <hr class="cherry" />
+      </h3>
+      <div class="singleData-container">
+        <as-input
+          [label]="'Telefon'"
+          [controlName]="'phoneNr'"
+          [group]="patientForm"
+          [required]="!patientForm.value.email"
+          [errorMsg]="getErrorMsg('phoneNr', patientForm)"
+          [isRequired]="editMode"
+          inputType="text"
+        />
+        <as-input
+          [label]="'Mail'"
+          [controlName]="'email'"
+          [group]="patientForm"
+          [required]="!patientForm.value.phoneNr"
+          [errorMsg]="getErrorMsg('email', patientForm)"
+          [isRequired]="editMode"
+          inputType="text"
+        />
+      </div>
+      <span *ngIf="editMode">Przynajmniej jedno z powyższych pól musi zostać wypełnione</span>
+    </div>
+
+    <button *ngIf="!editMode && !editModeOnStart" class="btn btn-outline-dark edit-button buttons" (click)="enableEdit()">
+      <i class="bi bi-pencil-square"></i>Edytuj
+    </button>
+    <div *ngIf="editMode" class="edit-buttons-container buttons">
+      <button class="btn btn-outline-light cancel-button" (click)="cancel()"><i class="bi bi-x-lg"></i>Anuluj</button>
+      <button class="btn btn-outline-light save-button" type="submit" [disabled]="!patientForm.valid" (click)="submit()">
+        <i class="bi bi-floppy"></i>Zapisz
+      </button>
+    </div>
+  </as-bordered-field>
+</form>

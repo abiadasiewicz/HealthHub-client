@@ -1,0 +1,5 @@
+<div [formGroup]="group">
+  <h5>{{ label }}<sup *ngIf="isRequired">*</sup></h5>
+  <input [formControlName]="controlName" type="{{ inputType }}" class="input-transparent" [required]="required" />
+  <div class="errorMsg">{{ errorMsg }}</div>
+</div>

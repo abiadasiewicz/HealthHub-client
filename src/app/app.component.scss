@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  as-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .app-container {
+    background-color: aliceblue;
+    flex: 1;
+  }
+}

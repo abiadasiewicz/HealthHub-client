@@ -1,0 +1,43 @@
+<div class="card">
+  <ng-container *ngIf="!emptyCard; else bigPlus">
+    <img
+      src="{{ cardConfig?.fotoUrl }}"
+      class="card-img-top"
+      alt="Zdjęcie pacjenta: {{ cardConfig?.firstName }} {{ cardConfig?.lastName }}"
+    />
+    <div class="card-body d-flex flex-column justify-content-between">
+      <h5 class="name">{{ cardConfig?.firstName }} {{ cardConfig?.lastName }}</h5>
+      <hr class="cherry" />
+      <div class="details-container">
+        <p class="birthdate">
+          Data urodzenia: <span>{{ formatISODate(cardConfig?.birthDate) }}</span>
+        </p>
+        <p class="phone-nr">
+          Nr telefonu: <span>{{ formatPhoneNr(cardConfig?.phone) }}</span>
+        </p>
+        <p class="pesel">
+          PESEL: <span>{{ cardConfig?.pesel }}</span>
+        </p>
+      </div>
+      <hr class="cherry" />
+      <div *ngIf="cardConfig?.nextVisit; else witoutVisit">
+        <p class="next-visit">Najbliższa wizyta:</p>
+        <div class="date-container d-flex align-items-center">
+          <p class="time yellow-box"><i class="bi bi-clock-fill"></i>{{ time }}</p>
+          <p class="day fw-bolder"><i class="bi bi-calendar-event"></i>{{ day }}</p>
+        </div>
+      </div>
+    </div>
+    <p class="details"><i class="bi bi-eye-fill"></i></p>
+  </ng-container>
+</div>
+
+<ng-template #witoutVisit>
+  <p class="witoutVisit">Brak wizyt</p>
+</ng-template>
+
+<ng-template #bigPlus>
+  <div class="bigPlus d-flex justify-content-center align-items-center">
+    <i class="bi bi-plus"></i>
+  </div>
+</ng-template>

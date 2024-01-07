@@ -1,0 +1,143 @@
+{
+  "patients": [
+    {
+      "patientData": {
+        "personalData": {
+          "firstName": "Józef",
+          "lastName": "Piłsudski",
+          "pesel": "67120505422",
+          "birthDate": "05.12.1967"
+        },
+        "fotoUrl": "https://dzieje.pl/sites/default/files/styles/pp_zdjecie_glowne_pion/public/202003/pilsudski_jozef.jpg?itok=UonZ5i4-",
+        "contact": {
+          "email": "jozef.pilsudski@gmail.com",
+          "phoneNr": "111119120"
+        },
+        "address": {
+          "city": "Zułowo",
+          "country": "Litwa",
+          "street": "Trumpoji gatvė",
+          "province": "Pažeimenė",
+          "postcode": "18188"
+        }
+      },
+      "id": 1
+    },
+    {
+      "patientData": {
+        "personalData": {
+          "firstName": "Tadeusz",
+          "lastName": "Kościuszko",
+          "pesel": "46020411581",
+          "birthDate": "04.02.1746"
+        },
+        "fotoUrl": "https://loiv.torun.pl/wp-content/uploads/2023/03/T_Kosciuszko.jpg",
+        "contact": {
+          "email": "tadek.kosciuszko@wp.pl",
+          "phoneNr": "120817841"
+        },
+        "address": {
+          "city": "Mereczowszczyzna",
+          "country": "Białoruś",
+          "street": "Tadeusza Kościuszki",
+          "province": "Obwód Brzeski",
+          "postcode": "225262"
+        }
+      },
+      "id": 2
+    },
+    {
+      "id": 3,
+      "nextVisit": "2023-11-10 12:30",
+      "patientData": {
+        "personalData": {
+          "firstName": "Mikołaj",
+          "lastName": "Kopernik",
+          "pesel": "73021945618",
+          "birthDate": "19.02.1473"
+        },
+        "fotoUrl": "https://dzieje.pl/sites/default/files/styles/open_article_750x0_/public/201805/mikolaj_kopernik3.jpg?itok=COfB3O24",
+        "contact": {
+          "email": "geocentryzm.to@gmail.com",
+          "phoneNr": "120815434"
+        },
+        "address": {
+          "city": "Toruń",
+          "country": "Polska",
+          "street": "Kopernika 15",
+          "province": "Kujawsko-Pomorskie",
+          "postcode": "87-100"
+        }
+      }
+    },
+    {
+      "patientData": {
+        "personalData": {
+          "firstName": "Kazimierz",
+          "lastName": "Wielki",
+          "pesel": "10043012573",
+          "birthDate": "30.04.1310"
+        },
+        "fotoUrl": "https://dzieje.pl/sites/default/files/styles/open_article_750x0_/public/201807/Kazimierz_III_Wielki.jpg?itok=eZA3u-2Y",
+        "contact": {
+          "email": "wstrzymac.belki@o2.pl",
+          "phoneNr": "124521457"
+        },
+        "address": {
+          "city": "Kowal",
+          "country": "Polska",
+          "street": "Kazimierza Wielkiego",
+          "province": "Kujawsko-Pomorskie",
+          "postcode": "87-820"
+        }
+      },
+      "id": 4
+    },
+    {
+      "patientData": {
+        "personalData": {
+          "firstName": "Mieszko",
+          "lastName": "I",
+          "pesel": "32071101454",
+          "birthDate": "11.07.0932"
+        },
+        "fotoUrl": "https://bi.im-g.pl/im/73/f8/14/z21987955AMP,Mieszko-I.jpg",
+        "contact": {
+          "email": "mieszko@gmail.com",
+          "phoneNr": "966966966"
+        },
+        "address": {
+          "city": "Poznań",
+          "country": "Polska",
+          "street": "Księcia Mieszka I",
+          "province": "Wielkopolskie",
+          "postcode": "60-686"
+        }
+      },
+      "id": 5
+    },
+    {
+      "patientData": {
+        "personalData": {
+          "firstName": "Andrzej",
+          "lastName": "Duda",
+          "pesel": "72051634536",
+          "birthDate": "16.05.1972"
+        },
+        "fotoUrl": "https://mamprawowiedziec.pl/images/specific/prez2020/31044.png",
+        "contact": {
+          "email": "",
+          "phoneNr": "123456789"
+        },
+        "address": {
+          "city": "Warszawa",
+          "country": "Polska",
+          "street": "Krakowskie Przedmieście",
+          "province": "Mazowieckie",
+          "postcode": "00-071"
+        }
+      },
+      "id": 6
+    }
+  ]
+}

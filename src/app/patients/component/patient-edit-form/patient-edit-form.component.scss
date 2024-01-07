@@ -1,0 +1,103 @@
+:host {
+  as-bordered-field {
+    display: block;
+    max-width: 768px;
+    margin: 28px auto auto auto;
+
+    .card-img-top {
+      height: 234px;
+      width: 180px;
+      border: 1px solid darkblue;
+      border-radius: 4px;
+
+      &.ng-invalid {
+        &.ng-touched {
+          border: 3px solid #dc3545;
+        }
+      }
+    }
+
+    .input-container {
+      margin-top: 60px;
+      width: 204px;
+    }
+
+    h3 {
+      width: fit-content;
+      margin-bottom: 16px;
+
+      .cherry {
+        margin-top: 4px;
+        width: 90%;
+      }
+    }
+
+    .patientData {
+      display: flex;
+
+      .singleData-container {
+        padding: 8px;
+      }
+
+      .personalData {
+        margin: auto 16px auto 32px;
+
+        .singleData-container {
+          display: grid;
+          grid-template-columns: 230px 230px;
+          grid-column-gap: 10px;
+          grid-row-gap: 5px;
+        }
+      }
+    }
+
+    .adressData {
+      .singleData-container {
+        display: grid;
+        grid-template-columns: 230px 230px 230px;
+        grid-column-gap: 10px;
+        grid-row-gap: 5px;
+      }
+    }
+
+    .cherry {
+      margin-top: 8px;
+    }
+
+    .contactData {
+      .singleData-container {
+        display: grid;
+        grid-template-columns: 230px 230px;
+        grid-column-gap: 10px;
+      }
+
+      span {
+        font-style: italic;
+        color: rgba(0, 0, 90, 0.7);
+      }
+    }
+
+    .buttons {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+
+      i {
+        margin-right: 4px;
+      }
+
+      .cancel-button {
+        margin-right: 12px;
+        background-color: #dc3545;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    }
+
+    .azure {
+      margin-top: 2px;
+    }
+  }
+}

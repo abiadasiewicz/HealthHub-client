@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../../node_modules/bootstrap-icons/font/bootstrap-icons.scss';
+
+$darkblue: rgb(0, 0, 90);
+$blue: rgba($darkblue, 0.9);
+$lightblue: rgb(0, 0, 200);
+
+.yellow-box {
+  background-color: #CCF5E7;
+  padding: 6px 12px;
+  border-radius: 10px;
+  color: #39D59E;
+  font-weight: bolder;
+}
+
+.container.py-5 {
+  max-width: 1180px;
+}
+
+.cherry {
+  color: #dc3545;
+}
+
+.azure {
+  color: rgb(0, 127, 255);
+}
+
+.divider {
+  width: 90%;
+  height: 3px;
+  background-color: blue;
+  border: 1px solid blue;
+  border-radius: 3px;
+}
+
+.btn-outline-dark {
+  background-color: whitesmoke;
+  border-color: $darkblue;
+
+  &:hover, &:focus-visible {
+    background-color: rgba($lightblue, 0.8);
+    border-color: rgba($lightblue, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+  }
+}
+
+.btn-outline-light {
+  background-color: rgba($darkblue, 0.8);
+  border-color: rgba($darkblue, 0.8);
+
+  &:hover, &:focus-visible {
+    background-color: whitesmoke;
+    border-color: $lightblue;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+  }
+}
+
+h1 {
+  color: $darkblue;
+  width: fit-content;
+}
+
+h5 {
+  color: $blue;
+}
+
+.darkblue {
+  color: $darkblue;
+}
+
+.nav-link {
+  color: $blue;
+}
+
+p {
+  color: dimgray;
+}
+
+.btn-transparent {
+  background-color: transparent;
+  border: none;
+  font-style: italic;
+  color: $darkblue;
+}
+
+img {
+  background-position: center center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.input-transparent {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 200);
+  width: 120px;
+  font-style: italic;
+  color: rgba(0, 0, 90, 0.9);
+
+  &.ng-invalid {
+    &.ng-touched {
+      border-bottom: 2px solid #dc3545;
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-bottom: 2px solid rgb(0, 0, 90);
+    margin-bottom: 0;
+  }
+}
+
+
+.btn {
+  &:disabled {
+    background-color: #b6b6b6;
+    color: #565656;
+  }
+}
+

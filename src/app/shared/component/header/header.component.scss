@@ -1,0 +1,69 @@
+:host {
+  .navbar {
+    height: 80px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+
+    .bi-journal-medical {
+      padding: 0 16px;
+      font-size: 24px;
+    }
+
+    .vertical-line {
+      border: none;
+      border-left: 2px solid;
+      height: 44px;
+      margin: 0 8px;
+    }
+
+    a {
+      margin: 0 8px;
+    }
+    .active {
+      text-shadow: 0 0 2px rgba(0, 0, 180, 0.4);
+    }
+
+
+    button {
+      margin: 0 4px;
+      padding: 4px 16px;
+    }
+
+    .buttons-container {
+      i {
+        margin-right: 8px;
+      }
+
+      .signup {
+        .opened {
+          display: none;
+        }
+
+        &:hover, &:focus-visible {
+          .closed {
+            display: none;
+          }
+
+          .opened {
+            display: inline;
+          }
+        }
+      }
+
+      .signin {
+        .arrow-square {
+          display: none;
+        }
+
+        &:hover, &:focus-visible {
+          .arrow-in {
+            display: none;
+          }
+
+          .arrow-square {
+            display: inline;
+          }
+        }
+      }
+    }
+  }
+}
