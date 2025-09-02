@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { formatISODate, mapDate, splitDate } from '../../../utils/date-util';
 import { CardConfig } from '../../model/CardConfig';
 import { formatPhoneNr } from '../../../utils/phone-util';
+import * as dayjs from "dayjs";
+import {Dayjs} from "dayjs";
 
 @Component({
   selector: 'as-patient-card',
@@ -17,15 +19,16 @@ export class PatientCardComponent implements OnInit {
 
   time: string | undefined;
 
-  protected readonly formatISODate = formatISODate;
-
   ngOnInit() {
     const nextVisit = this.cardConfig?.nextVisit;
     if (nextVisit) {
-      const splittedDate = splitDate(nextVisit);
-      this.time = splittedDate.time;
-      this.day = mapDate(splittedDate.day);
+      this.time = dayjs(nextVisit).hour().toString() + ':' + dayjs(nextVisit).minute().toString();
+      this.day = dayjs(nextVisit).format('DD.MM');
     }
+  }
+
+  formatDate(date: string | undefined): string {
+    return dayjs(date).format('DD.MM.YYYY');
   }
 
   protected readonly formatPhoneNr = formatPhoneNr;

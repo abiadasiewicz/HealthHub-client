@@ -3,6 +3,7 @@ import { PersonalDetails } from '../model/PersonalDetails';
 import { CardConfig } from '../model/CardConfig';
 import { formatISODate } from '../../utils/date-util';
 import { Router } from '@angular/router';
+import * as dayjs from "dayjs";
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +31,7 @@ export class PatientsService {
       fotoUrl: card.patientData?.fotoUrl,
       firstName: card.patientData.personalData.firstName,
       lastName: card.patientData.personalData.lastName,
-      birthDate: card.patientData.personalData.birthDate,
+      birthDate: dayjs(card.patientData.personalData.birthDate).format('YYYY-MM-DD'),
       phone: card.patientData.contact.phoneNr,
       pesel: card.patientData.personalData.pesel,
       nextVisit: card.nextVisit,

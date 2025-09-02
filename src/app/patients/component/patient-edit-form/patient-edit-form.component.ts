@@ -1,12 +1,14 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { formatISODate } from '../../../utils/date-util';
-import { Router } from '@angular/router';
-import { getErrorMsg, peselValidator } from '../../../utils/validator-util';
-import { PersonalDetails } from '../../model/PersonalDetails';
-import { PatientsApiService } from '../../service/patients-api.service';
-import { Subject, takeUntil } from 'rxjs';
-import { PatientsService } from '../../service/patients.service';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {formatISODate} from '../../../utils/date-util';
+import {ActivatedRoute, Router} from '@angular/router';
+import {getErrorMsg, peselValidator} from '../../../utils/validator-util';
+import {PersonalDetails} from '../../model/PersonalDetails';
+import {PatientsApiService} from '../../service/patients-api.service';
+import {Subject, takeUntil} from 'rxjs';
+import {PatientsService} from '../../service/patients.service';
+import * as dayjs from 'dayjs';
+import {PatientData} from '../../model/PatientData';
 
 @Component({
   selector: 'as-patient-edit-form',
@@ -29,6 +31,9 @@ export class PatientEditFormComponent implements OnInit, OnDestroy {
 
   patientForm: FormGroup;
 
+  // @ts-ignore
+  userId: number;
+
   protected readonly getErrorMsg = getErrorMsg;
 
   private readonly DATE_REGEX = /^(0[1-9]|[12]\d|3[01])\.(0[1-9]|1[0-2])\.\d{4}$/;
@@ -46,6 +51,7 @@ export class PatientEditFormComponent implements OnInit, OnDestroy {
    */
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private patientsApiService: PatientsApiService,
     private patientsService: PatientsService,
   ) {
@@ -77,6 +83,7 @@ export class PatientEditFormComponent implements OnInit, OnDestroy {
     this.patientForm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(() => {
       this.isDirty.emit(this.patientForm.dirty);
     });
+    this.userId = Number(this.route.snapshot.paramMap.get('id'));
   }
 
   ngOnDestroy() {
@@ -109,14 +116,14 @@ export class PatientEditFormComponent implements OnInit, OnDestroy {
         .addPatient(collectedData)
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => {
-          this.patientsService.navigateToSelectedPatient(collectedData.id);
+          this.patientsService.navigateToSelectedPatient(this.userId);
         });
-    } else if (this.personalDetails?.id) {
+    } else if (this.userId) {
       this.patientsApiService
-        .updatePatient(this.personalDetails.id, collectedData)
+        .updatePatient(this.userId, collectedData)
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => {
-          this.patientsService.navigateToSelectedPatient(collectedData.id);
+          this.patientsService.navigateToSelectedPatient(this.userId);
         });
     }
     this.patientForm.disable();
@@ -128,7 +135,7 @@ export class PatientEditFormComponent implements OnInit, OnDestroy {
       this.patientForm.patchValue({
         firstName: this.personalDetails?.patientData?.personalData?.firstName ?? null,
         lastName: this.personalDetails?.patientData?.personalData?.lastName ?? null,
-        birthDate: formatISODate(this.personalDetails?.patientData?.personalData?.birthDate) ?? null,
+        birthDate: dayjs(this.personalDetails?.patientData?.personalData?.birthDate).format('DD.MM.YYYY') ?? null,
         pesel: this.personalDetails?.patientData?.personalData?.pesel ?? null,
         street: this.personalDetails?.patientData?.address?.street ?? null,
         city: this.personalDetails?.patientData?.address?.city ?? null,
@@ -142,29 +149,31 @@ export class PatientEditFormComponent implements OnInit, OnDestroy {
     }
   }
 
-  private collectFormData(): PersonalDetails {
+  private collectFormData(): PatientData {
     this.isDirty.emit(this.patientForm.dirty);
     return {
-      patientData: {
-        personalData: {
-          firstName: <string>this.patientForm.get('firstName')?.value,
-          lastName: <string>this.patientForm.get('lastName')?.value,
-          pesel: <string>this.patientForm.get('pesel')?.value,
-          birthDate: <string>this.patientForm.get('birthDate')?.value,
-        },
-        fotoUrl: <string>this.patientForm.get('fotoUrl')?.value,
-        contact: {
-          email: <string>this.patientForm.get('email')?.value,
-          phoneNr: <string>this.patientForm.get('phoneNr')?.value,
-        },
-        address: {
-          city: <string>this.patientForm.get('city')?.value,
-          country: <string>this.patientForm.get('country')?.value,
-          street: <string>this.patientForm.get('street')?.value,
-          province: <string>this.patientForm.get('province')?.value,
-          postcode: <string>this.patientForm.get('postcode')?.value,
-        },
+      personalData: {
+        firstName: <string>this.patientForm.get('firstName')?.value,
+        lastName: <string>this.patientForm.get('lastName')?.value,
+        pesel: <string>this.patientForm.get('pesel')?.value,
+        birthDate: dayjs(this.patientForm.get('birthDate')?.value as string),
       },
-    } as PersonalDetails;
+      fotoUrl: <string>this.patientForm.get('fotoUrl')?.value,
+      contact: {
+        email: <string>this.patientForm.get('email')?.value,
+        phoneNr: <string>this.patientForm.get('phoneNr')?.value,
+      },
+      address: {
+        city: <string>this.patientForm.get('city')?.value,
+        country: <string>this.patientForm.get('country')?.value,
+        street: <string>this.patientForm.get('street')?.value,
+        province: <string>this.patientForm.get('province')?.value,
+        postcode: <string>this.patientForm.get('postcode')?.value,
+      },
+    };
+  }
+
+  delete() {
+    this.patientsApiService.deletePatient(this.userId).subscribe(() => void this.router.navigate(['/patients']));
   }
 }

@@ -1,7 +1,7 @@
 <form [formGroup]="patientForm">
   <as-bordered-field>
     <div class="patientData">
-      <img *ngIf="!editMode" src="{{ personalDetails?.patientData?.fotoUrl }}" class="card-img-top" alt="Zdjęcie pacjenta" />
+      <img *ngIf="!editMode" src="{{ personalDetails?.patientData?.fotoUrl }}" class="card-img-top" alt="Zdjęcie pacjenta"/>
       <div class="input-container">
         <as-input
           *ngIf="editMode"
@@ -16,7 +16,7 @@
       <div class="personalData">
         <h3>
           Dane osobowe
-          <hr class="cherry" />
+          <hr class="cherry"/>
         </h3>
         <div class="singleData-container">
           <as-input
@@ -52,13 +52,13 @@
             inputType="text"
           />
         </div>
-        <hr class="azure" />
+        <hr class="azure"/>
       </div>
     </div>
     <div class="adressData mx-3">
       <h3>
         Adres
-        <hr class="cherry" />
+        <hr class="cherry"/>
       </h3>
       <div class="singleData-container">
         <as-input
@@ -102,12 +102,12 @@
           inputType="text"
         />
       </div>
-      <hr class="azure" />
+      <hr class="azure"/>
     </div>
     <div class="contactData mx-3">
       <h3>
         Kontakt
-        <hr class="cherry" />
+        <hr class="cherry"/>
       </h3>
       <div class="singleData-container">
         <as-input
@@ -132,9 +132,10 @@
       <span *ngIf="editMode">Przynajmniej jedno z powyższych pól musi zostać wypełnione</span>
     </div>
 
-    <button *ngIf="!editMode && !editModeOnStart" class="btn btn-outline-dark edit-button buttons" (click)="enableEdit()">
-      <i class="bi bi-pencil-square"></i>Edytuj
-    </button>
+    <div *ngIf="!editMode && !editModeOnStart" class="edit-buttons-container buttons">
+      <button class="btn btn-outline-light delete-button" (click)="delete()"><i class="bi bi-trash"></i>Usuń</button>
+      <button class="btn btn-outline-dark edit-button" (click)="enableEdit()"><i class="bi bi-pencil-square"></i>Edytuj</button>
+    </div>
     <div *ngIf="editMode" class="edit-buttons-container buttons">
       <button class="btn btn-outline-light cancel-button" (click)="cancel()"><i class="bi bi-x-lg"></i>Anuluj</button>
       <button class="btn btn-outline-light save-button" type="submit" [disabled]="!patientForm.valid" (click)="submit()">

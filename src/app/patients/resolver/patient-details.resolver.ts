@@ -8,11 +8,7 @@ export const patientDetailsResolver: (route: ActivatedRouteSnapshot) => Observab
   const id = Number(route.paramMap.get('id'));
 
   const apiService = inject(PatientsApiService);
-  return apiService.getAllPatients().pipe(
-    switchMap((details) => {
-      const patient = details.find((patient) => patient.id === id);
-      return of(patient ?? null);
-    }),
+  return apiService.getPatientById(id).pipe(
     catchError((error) => {
       console.error('Error:', error);
       return of(null);
